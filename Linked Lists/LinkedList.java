@@ -1,0 +1,194 @@
+// LinkedList Implementation in Java
+// ---------------------------------
+// Definition:
+// A Linked List is a linear data structure where elements (nodes) are stored in non-contiguous memory locations.
+// Each node contains data and a reference (pointer) to the next node in the sequence.
+
+// Operations Implemented:
+// 1. addFirst(int data)      : Adds a node at the beginning of the list.
+// 2. addLast(int data)       : Adds a node at the end of the list.
+// 3. addMiddle(int idx, int data) : Adds a node at a specific index.
+// 4. print()                 : Prints the linked list.
+// 5. removeFirst()           : Removes the first node and returns its value.
+// 6. removeLast()            : Removes the last node and returns its value.
+// 7. iterativeSearch(int key): Searches for a value iteratively and returns its index.
+// 8. recursiveSearch(int key): Searches for a value recursively and returns its index.
+
+// Creation of LinkedList:
+// - The LinkedList class contains a static inner Node class.
+// - Each Node has an integer data and a reference to the next Node.
+// - The LinkedList maintains references to head and tail nodes, and tracks its size.
+
+// Example Usage (see main method):
+// - Create a LinkedList object.
+// - Add nodes using addFirst, addLast, and addMiddle.
+// - Print the list and its size.
+
+// Code:
+public class LinkedList{
+    // Node definition: stores data and reference to next node
+    public static class Node{
+        int data;
+        Node next;
+        
+        public Node(int data){
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    // Head and tail references, and size of the list
+    public static Node head;
+    public static Node tail;
+    public static int size;
+
+    // Adds a node at the beginning of the list
+    public void addFirst(int data){
+        Node newNode = new Node(data);
+        size++;
+        // If list is empty, head and tail are the new node
+        if(head == null){
+            head = tail = newNode;
+            return;
+        }
+        // Otherwise, insert at the beginning
+        newNode.next = head;
+        head = newNode;
+    }
+
+    // Adds a node at the end of the list
+    public void addLast(int data){
+        Node newNode = new Node(data);
+        size++;
+        // If list is empty, head and tail are the new node
+        if(head == null){
+            head = tail = newNode;
+            return;
+        }
+        // Otherwise, insert at the end
+        tail.next = newNode;
+        tail = newNode;
+    }
+
+    // Prints the linked list
+    public void print(){
+        Node temp = head;
+        if(head == null){
+            System.out.println("LL is empty");
+            return;
+        }
+        while(temp != null){
+            System.out.print(temp.data + "->");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+
+    // Adds a node at a specific index (middle)
+    public void addMiddle(int idx, int data){
+        if(idx == 0){
+            addFirst(data);
+            return;
+        }
+        Node newNode = new Node(data);
+        size++;
+        Node temp = head;
+        int i = 0;
+        // Traverse to the node before the desired index
+        while(i < idx-1){
+            temp = temp.next;
+            i++;
+        }
+        // Insert the new node
+        newNode.next = temp.next;
+        temp.next = newNode;
+    }
+
+    // Removes the first node and returns its value
+    public int removeFirst(){
+        if(size==0){
+            System.out.println("LL is empty");
+            return Integer.MIN_VALUE;
+        }else if(size==1){
+            int val = head.data;
+            head = tail = null;
+            size--;
+            return val;
+        }
+        int val = head.data;
+        head = head.next;
+        size--;
+        return val;
+    }
+
+    // Removes the last node and returns its value
+    public int removeLast(){
+        if(size==0){
+            System.out.println("LL is empty");
+            return Integer.MIN_VALUE;
+        }else if(size==1){
+            int val = head.data;
+            head = tail = null;
+            size=0;
+            return val;
+        }
+        // Traverse to the second last node
+        Node prev = head;
+        for(int i=0; i<size-2; i++){
+            prev = prev.next;
+        }
+        int val = prev.next.data;
+        prev.next = null;
+        tail = prev;
+        size--;
+        return val;
+    }
+
+    // Iteratively searches for a key and returns its index, or -1 if not found
+    public int iterativeSearch(int key){
+        Node temp = head;
+        int i = 0;
+        while(temp != null){
+            if(temp.data == key){ //Key found
+                return i;
+            }
+            temp = temp.next;
+            i++;
+        }
+        // Key Not Found
+        return -1;
+    }
+
+    // Helper for recursive search
+    public int helper(Node head, int key){
+        if(head == null){
+            return -1;
+        }
+        if(head.data == key){
+            return 0;
+        }
+        int subIdx = helper(head.next, key);
+        if(subIdx == -1){
+            return -1;
+        }
+        return subIdx+1;
+    }
+
+    // Recursively searches for a key and returns its index, or -1 if not found
+    public int recursiveSearch(int key){
+        return helper(head, key);
+    }
+
+    // Main method: demonstrates creation and operations on LinkedList
+    public static void main(String[] args){
+        LinkedList ll = new LinkedList();
+        ll.addFirst(30);      // Add 30 at beginning
+        ll.addFirst(20);      // Add 20 at beginning
+        ll.addFirst(10);      // Add 10 at beginning
+        ll.addLast(50);       // Add 50 at end
+        ll.addLast(60);       // Add 60 at end
+        ll.addMiddle(3, 40);  // Add 40 at index 3
+        ll.print();           // Print the list
+        System.out.println(LinkedList.size); // Print size of the list
+    }
+}
