@@ -222,6 +222,61 @@ public class LinkedList{
         prev.next = prev.next.next;
     }
 
+
+    // Finding the middle node of the Linked List usind the slow and fast pointer technique
+    // 1. Initialize two pointers, slow and fast, both pointing to the head.
+    // 2. Move slow by one step and fast by two steps in each iteration.
+    // 3. When fast reaches the end, slow will be at the middle.
+    // 4. Return the middle node.
+    // This method returns the middle node of the linked list
+    // If the list has an even number of nodes, it returns the second middle node.
+    public Node findMid(Node head){
+        Node slow = head;
+        Node fast = head;
+        while(fast != null && fast.next != null){
+            slow = slow.next; // Move slow by 1
+            fast = fast.next.next; // Move fast by 2
+        }
+        return slow; // Return the middle node
+    }
+
+    // Check if the linked list is a palindrome
+    // 1. Find the middle node using the findMid method.
+    // 2. Reverse the second half of the linked list.
+    // 3. Compare the first half with the reversed second half.
+    public boolean checkPalindrome(){
+        if(head == null || head.next == null){
+            return true; // Empty or single node list is a palindrome
+        }
+
+        Node mid = findMid(head); // Find the middle node
+
+        Node prev = null;
+        Node curr = mid;
+        Node next;
+
+        // Reverse the second half of the linked list
+        while(curr != null){
+            next = curr.next; // Store next node
+            curr.next = prev; // Reverse the link
+            prev = curr;      // Move prev to current
+            curr = next;      // Move to next node
+        }
+
+        // Compare first half and reversed second half
+        Node left = head;
+        Node right = prev; // Start from the end of the original second half
+
+        while(right != null){
+            if(left.data != right.data){
+                return false; // Not a palindrome
+            }
+            left = left.next;
+            right = right.next;
+        }
+        return true; // Is a palindrome
+    }
+
     // Main method: demonstrates creation and operations on LinkedList
     public static void main(String[] args){
         LinkedList ll = new LinkedList();
