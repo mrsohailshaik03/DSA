@@ -196,7 +196,31 @@ public class LinkedList{
         }
         head = prev; // Update head to the new first node
     }
-
+    // Removes the Nth node from the end of the linked list
+    public void deleteNthFromEnd(int n){
+        // Step 1: Calculate the size of the linked list
+        int sz = 0;
+        Node temp = head;
+        while(temp != null){
+            sz++;
+            temp = temp.next;
+        }
+        // Step 2: If n equals the size, remove the first node
+        if(n == sz){
+            head = head.next; // Remove the first node
+            return;
+        }
+        // Step 3: Find the node just before the Nth node from end
+        int i = 1;
+        int iToFind = sz - n;
+        Node prev = head;
+        while(i < iToFind){
+            prev = prev.next;
+            i++;
+        }
+        // Step 4: Remove the Nth node from end
+        prev.next = prev.next.next;
+    }
 
     // Main method: demonstrates creation and operations on LinkedList
     public static void main(String[] args){
