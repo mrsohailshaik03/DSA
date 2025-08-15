@@ -179,6 +179,25 @@ public class LinkedList{
         return helper(head, key);
     }
 
+    // Reverse a linked list using iterative approach
+    // 1. next = curr.next;
+    // 2. curr.next = prev;
+    // 3. prev = curr;
+    // 4. curr = next;
+    public void reverse(){
+        Node prev = null;
+        Node curr = tail = head; // Start with head
+        Node next;
+        while(curr != null){
+            next = curr.next; // Store next node
+            curr.next = prev; // Reverse the link
+            prev = curr;      // Move prev to current
+            curr = next;      // Move to next node
+        }
+        head = prev; // Update head to the new first node
+    }
+
+
     // Main method: demonstrates creation and operations on LinkedList
     public static void main(String[] args){
         LinkedList ll = new LinkedList();
@@ -189,6 +208,8 @@ public class LinkedList{
         ll.addLast(60);       // Add 60 at end
         ll.addMiddle(3, 40);  // Add 40 at index 3
         ll.print();           // Print the list
-        System.out.println(LinkedList.size); // Print size of the list
+        // System.out.println(LinkedList.size); // Print size of the list
+        ll.reverse();      // Reverse the linked list
+        ll.print();           // Print the reversed list
     }
 }
