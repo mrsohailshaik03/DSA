@@ -277,6 +277,24 @@ public class LinkedList{
         return true; // Is a palindrome
     }
 
+    // Detect a loop/cycle in a LinkedList
+    // Floyd's Cycle Detection Algorithm (Tortoise and Hare)
+    // 1. Initialize two pointers, slow and fast.
+    // 2. Move slow by one step and fast by two steps.
+    // 3. If they meet, there is a cycle; otherwise, if fast reaches null, there is no cycle.
+    public static boolean detectLoop(){
+        Node slow = head;
+        Node fast = head;
+        while(fast != null && fast.next != null){
+            slow = slow.next; // Move slow by 1
+            fast = fast.next.next; // Move fast by 2
+            if(slow == fast){ // Cycle detected
+                return true;
+            }
+        }
+        return false; // No cycle
+    }
+
     // Main method: demonstrates creation and operations on LinkedList
     public static void main(String[] args){
         LinkedList ll = new LinkedList();
