@@ -295,18 +295,77 @@ public class LinkedList{
         return false; // No cycle
     }
 
+    // Merge Sort on a Linked List
+    public static Node getMid(Node head){
+        Node slow = head;
+        Node fast = head.next;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow; // Return the middle node
+    }
+
+    // Merge two sorted linked lists
+    public static Node merge(Node head1, Node head2){
+        Node mergedLL = new Node(-1); // Dummy node
+        Node temp = mergedLL; // Pointer to build the new list
+        while(head1 != null && head2 != null){
+            if(head1.data < head2.data){
+                temp.next = head1; // Attach head1 to merged list
+                head1 = head1.next; // Move head1 forward
+            } else {
+                temp.next = head2; // Attach head2 to merged list
+                head2 = head2.next; // Move head2 forward
+            }
+            temp = temp.next; // Move temp forward
+        }
+        while(head1 != null){
+            temp.next = head1; // Attach remaining nodes of head1
+            head1 = head1.next; // Move head1 forward
+            temp = temp.next; // Move temp forward
+        }
+        while(head2 != null){
+            temp.next = head2; // Attach remaining nodes of head2
+            head2 = head2.next; // Move head2 forward
+            temp = temp.next; // Move temp forward
+        }
+        return mergedLL.next; // Return the merged list, skipping the dummy node
+    }
+
+    // Merge Sort for Linked List
+    // Sorts the linked list using the merge sort algorithm
+    // 1. Find the middle of the list to split it into two halves.
+    // 2. Recursively sort each half.
+    // 3. Merge the two sorted halves.
+    public static Node mergeSort(Node head){
+        // Base case: if the list is empty or has one node, it's already sorted
+        if(head == null || head.next == null){
+            return head;
+        }
+        // Step 1: Get the middle node to split the list
+        Node mid = getMid(head);
+        Node rightHead = mid.next; // Start of the right half
+        mid.next = null; // Split the list into two halves
+
+        // Step 2: Recursively sort the left and right halves
+        Node newLeft = mergeSort(head);
+        Node newRight = mergeSort(rightHead);
+
+        // Step 3: Merge the sorted halves and return the merged list
+        return merge(newLeft, newRight);
+    }
+
     // Main method: demonstrates creation and operations on LinkedList
     public static void main(String[] args){
         LinkedList ll = new LinkedList();
-        ll.addFirst(30);      // Add 30 at beginning
-        ll.addFirst(20);      // Add 20 at beginning
-        ll.addFirst(10);      // Add 10 at beginning
-        ll.addLast(50);       // Add 50 at end
-        ll.addLast(60);       // Add 60 at end
-        ll.addMiddle(3, 40);  // Add 40 at index 3
-        ll.print();           // Print the list
-        // System.out.println(LinkedList.size); // Print size of the list
-        ll.reverse();      // Reverse the linked list
-        ll.print();           // Print the reversed list
+        ll.addFirst(10);
+        ll.addFirst(20);
+        ll.addLast(30);
+        ll.addLast(40);
+        ll.addMiddle(2, 25); // Add 25 at index 2
+        ll.print(); // Print the linked list
+        head = ll.mergeSort(head); // Assign the sorted list back to head
+        ll.print(); // Print the sorted linked list
     }
 }
