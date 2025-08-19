@@ -25,13 +25,13 @@
 // - Print the list and its size.
 
 // Code:
-public class LinkedList{
+public class LinkedList {
     // Node definition: stores data and reference to next node
-    public static class Node{
+    public static class Node {
         int data;
         Node next;
-        
-        public Node(int data){
+
+        public Node(int data) {
             this.data = data;
             this.next = null;
         }
@@ -40,14 +40,14 @@ public class LinkedList{
     // Head and tail references, and size of the list
     public static Node head;
     public static Node tail;
-    public static int size;
+    public int size;
 
     // Adds a node at the beginning of the list
-    public void addFirst(int data){
+    public void addFirst(int data) {
         Node newNode = new Node(data);
         size++;
         // If list is empty, head and tail are the new node
-        if(head == null){
+        if (head == null) {
             head = tail = newNode;
             return;
         }
@@ -57,11 +57,11 @@ public class LinkedList{
     }
 
     // Adds a node at the end of the list
-    public void addLast(int data){
+    public void addLast(int data) {
         Node newNode = new Node(data);
         size++;
         // If list is empty, head and tail are the new node
-        if(head == null){
+        if (head == null) {
             head = tail = newNode;
             return;
         }
@@ -71,13 +71,13 @@ public class LinkedList{
     }
 
     // Prints the linked list
-    public void print(){
+    public void print() {
         Node temp = head;
-        if(head == null){
+        if (head == null) {
             System.out.println("LL is empty");
             return;
         }
-        while(temp != null){
+        while (temp != null) {
             System.out.print(temp.data + "->");
             temp = temp.next;
         }
@@ -85,8 +85,8 @@ public class LinkedList{
     }
 
     // Adds a node at a specific index (middle)
-    public void addMiddle(int idx, int data){
-        if(idx == 0){
+    public void addMiddle(int idx, int data) {
+        if (idx == 0) {
             addFirst(data);
             return;
         }
@@ -95,7 +95,7 @@ public class LinkedList{
         Node temp = head;
         int i = 0;
         // Traverse to the node before the desired index
-        while(i < idx-1){
+        while (i < idx - 1) {
             temp = temp.next;
             i++;
         }
@@ -105,11 +105,11 @@ public class LinkedList{
     }
 
     // Removes the first node and returns its value
-    public int removeFirst(){
-        if(size==0){
+    public int removeFirst() {
+        if (size == 0) {
             System.out.println("LL is empty");
             return Integer.MIN_VALUE;
-        }else if(size==1){
+        } else if (size == 1) {
             int val = head.data;
             head = tail = null;
             size--;
@@ -122,19 +122,19 @@ public class LinkedList{
     }
 
     // Removes the last node and returns its value
-    public int removeLast(){
-        if(size==0){
+    public int removeLast() {
+        if (size == 0) {
             System.out.println("LL is empty");
             return Integer.MIN_VALUE;
-        }else if(size==1){
+        } else if (size == 1) {
             int val = head.data;
             head = tail = null;
-            size=0;
+            size = 0;
             return val;
         }
         // Traverse to the second last node
         Node prev = head;
-        for(int i=0; i<size-2; i++){
+        for (int i = 0; i < size - 2; i++) {
             prev = prev.next;
         }
         int val = prev.next.data;
@@ -145,11 +145,11 @@ public class LinkedList{
     }
 
     // Iteratively searches for a key and returns its index, or -1 if not found
-    public int iterativeSearch(int key){
+    public int iterativeSearch(int key) {
         Node temp = head;
         int i = 0;
-        while(temp != null){
-            if(temp.data == key){ //Key found
+        while (temp != null) {
+            if (temp.data == key) { // Key found
                 return i;
             }
             temp = temp.next;
@@ -160,22 +160,22 @@ public class LinkedList{
     }
 
     // Helper for recursive search
-    public int helper(Node head, int key){
-        if(head == null){
+    public int helper(Node head, int key) {
+        if (head == null) {
             return -1;
         }
-        if(head.data == key){
+        if (head.data == key) {
             return 0;
         }
         int subIdx = helper(head.next, key);
-        if(subIdx == -1){
+        if (subIdx == -1) {
             return -1;
         }
-        return subIdx+1;
+        return subIdx + 1;
     }
 
     // Recursively searches for a key and returns its index, or -1 if not found
-    public int recursiveSearch(int key){
+    public int recursiveSearch(int key) {
         return helper(head, key);
     }
 
@@ -184,29 +184,30 @@ public class LinkedList{
     // 2. curr.next = prev;
     // 3. prev = curr;
     // 4. curr = next;
-    public void reverse(){
+    public void reverse() {
         Node prev = null;
         Node curr = tail = head; // Start with head
         Node next;
-        while(curr != null){
+        while (curr != null) {
             next = curr.next; // Store next node
             curr.next = prev; // Reverse the link
-            prev = curr;      // Move prev to current
-            curr = next;      // Move to next node
+            prev = curr; // Move prev to current
+            curr = next; // Move to next node
         }
         head = prev; // Update head to the new first node
     }
+
     // Removes the Nth node from the end of the linked list
-    public void deleteNthFromEnd(int n){
+    public void deleteNthFromEnd(int n) {
         // Step 1: Calculate the size of the linked list
         int sz = 0;
         Node temp = head;
-        while(temp != null){
+        while (temp != null) {
             sz++;
             temp = temp.next;
         }
         // Step 2: If n equals the size, remove the first node
-        if(n == sz){
+        if (n == sz) {
             head = head.next; // Remove the first node
             return;
         }
@@ -214,7 +215,7 @@ public class LinkedList{
         int i = 1;
         int iToFind = sz - n;
         Node prev = head;
-        while(i < iToFind){
+        while (i < iToFind) {
             prev = prev.next;
             i++;
         }
@@ -222,18 +223,18 @@ public class LinkedList{
         prev.next = prev.next.next;
     }
 
-
-    // Finding the middle node of the Linked List usind the slow and fast pointer technique
+    // Finding the middle node of the Linked List usind the slow and fast pointer
+    // technique
     // 1. Initialize two pointers, slow and fast, both pointing to the head.
     // 2. Move slow by one step and fast by two steps in each iteration.
     // 3. When fast reaches the end, slow will be at the middle.
     // 4. Return the middle node.
     // This method returns the middle node of the linked list
     // If the list has an even number of nodes, it returns the second middle node.
-    public Node findMid(Node head){
+    public Node findMid(Node head) {
         Node slow = head;
         Node fast = head;
-        while(fast != null && fast.next != null){
+        while (fast != null && fast.next != null) {
             slow = slow.next; // Move slow by 1
             fast = fast.next.next; // Move fast by 2
         }
@@ -244,8 +245,8 @@ public class LinkedList{
     // 1. Find the middle node using the findMid method.
     // 2. Reverse the second half of the linked list.
     // 3. Compare the first half with the reversed second half.
-    public boolean checkPalindrome(){
-        if(head == null || head.next == null){
+    public boolean checkPalindrome() {
+        if (head == null || head.next == null) {
             return true; // Empty or single node list is a palindrome
         }
 
@@ -256,19 +257,19 @@ public class LinkedList{
         Node next;
 
         // Reverse the second half of the linked list
-        while(curr != null){
+        while (curr != null) {
             next = curr.next; // Store next node
             curr.next = prev; // Reverse the link
-            prev = curr;      // Move prev to current
-            curr = next;      // Move to next node
+            prev = curr; // Move prev to current
+            curr = next; // Move to next node
         }
 
         // Compare first half and reversed second half
         Node left = head;
         Node right = prev; // Start from the end of the original second half
 
-        while(right != null){
-            if(left.data != right.data){
+        while (right != null) {
+            if (left.data != right.data) {
                 return false; // Not a palindrome
             }
             left = left.next;
@@ -281,14 +282,15 @@ public class LinkedList{
     // Floyd's Cycle Detection Algorithm (Tortoise and Hare)
     // 1. Initialize two pointers, slow and fast.
     // 2. Move slow by one step and fast by two steps.
-    // 3. If they meet, there is a cycle; otherwise, if fast reaches null, there is no cycle.
-    public static boolean detectLoop(){
+    // 3. If they meet, there is a cycle; otherwise, if fast reaches null, there is
+    // no cycle.
+    public static boolean detectLoop() {
         Node slow = head;
         Node fast = head;
-        while(fast != null && fast.next != null){
+        while (fast != null && fast.next != null) {
             slow = slow.next; // Move slow by 1
             fast = fast.next.next; // Move fast by 2
-            if(slow == fast){ // Cycle detected
+            if (slow == fast) { // Cycle detected
                 return true;
             }
         }
@@ -296,10 +298,10 @@ public class LinkedList{
     }
 
     // Merge Sort on a Linked List
-    public static Node getMid(Node head){
+    public static Node getMid(Node head) {
         Node slow = head;
         Node fast = head.next;
-        while(fast != null && fast.next != null){
+        while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
@@ -307,11 +309,11 @@ public class LinkedList{
     }
 
     // Merge two sorted linked lists
-    public static Node merge(Node head1, Node head2){
+    public static Node merge(Node head1, Node head2) {
         Node mergedLL = new Node(-1); // Dummy node
         Node temp = mergedLL; // Pointer to build the new list
-        while(head1 != null && head2 != null){
-            if(head1.data < head2.data){
+        while (head1 != null && head2 != null) {
+            if (head1.data < head2.data) {
                 temp.next = head1; // Attach head1 to merged list
                 head1 = head1.next; // Move head1 forward
             } else {
@@ -320,12 +322,12 @@ public class LinkedList{
             }
             temp = temp.next; // Move temp forward
         }
-        while(head1 != null){
+        while (head1 != null) {
             temp.next = head1; // Attach remaining nodes of head1
             head1 = head1.next; // Move head1 forward
             temp = temp.next; // Move temp forward
         }
-        while(head2 != null){
+        while (head2 != null) {
             temp.next = head2; // Attach remaining nodes of head2
             head2 = head2.next; // Move head2 forward
             temp = temp.next; // Move temp forward
@@ -338,9 +340,9 @@ public class LinkedList{
     // 1. Find the middle of the list to split it into two halves.
     // 2. Recursively sort each half.
     // 3. Merge the two sorted halves.
-    public static Node mergeSort(Node head){
+    public static Node mergeSort(Node head) {
         // Base case: if the list is empty or has one node, it's already sorted
-        if(head == null || head.next == null){
+        if (head == null || head.next == null) {
             return head;
         }
         // Step 1: Get the middle node to split the list
@@ -356,16 +358,70 @@ public class LinkedList{
         return merge(newLeft, newRight);
     }
 
+    /**
+     * Converts the current linked list into a zigzag linked list.
+     * <p>
+     * In a zigzag linked list, the nodes are rearranged such that the elements are
+     * ordered as:
+     * first node < second node > third node < fourth node > fifth node ... and so
+     * on.
+     * This means that every even-indexed node (starting from index 0) is less than
+     * its next node,
+     * and every odd-indexed node is greater than its next node, if such a node
+     * exists.
+     * <p>
+     * The method should rearrange the nodes in-place without using extra space for
+     * another list.
+     * After execution, the linked list will follow the zigzag pattern.
+     * Example:
+     * Input: 1 -> 2 -> 3 -> 4 -> 5
+     * Output: 1 -> 3 -> 2 -> 5 -> 4
+     *
+     * Note: If the linked list is empty, the method will not perform any operation.
+     */
+
+    public void zigZag() {
+        // Check if the list is empty or has only one node
+        if (head == null || head.next == null) {
+            return;
+        }
+        // Find Mid
+        Node slow = head;
+        Node fast = head.next;
+        while (fast != null && fast.next != null) {
+            slow = slow.next; // Move slow by 1
+            fast = fast.next.next; // Move fast by 2
+        }
+        Node mid = slow; // Mid is the slow pointer
+        // Reverse the second half of the linked list
+        Node curr = mid.next;
+        mid.next = null; // Split the list into two halves
+        Node prev = null;
+        Node next;
+        while (curr != null) {
+            next = curr.next; // Store next node
+            curr.next = prev; // Reverse the link
+            prev = curr; // Move prev to current
+            curr = next; // Move to next node
+        }
+        Node left = head; // Start from the head of the first half
+        Node right = prev; // Start from the head of the reversed second half
+        Node nextL, nextR; // Pointers to store next nodes
+        // Rearrange nodes in zigzag order
+        while (left != null && right != null) {
+            nextL = left.next;
+            left.next = right; // Link left to right
+            nextR = right.next;
+            right.next = nextL; // Link right to next left
+
+            // Move to the next nodes
+            left = nextL;
+            right = nextR;
+        }
+    }
+
     // Main method: demonstrates creation and operations on LinkedList
-    public static void main(String[] args){
+    public static void main(String[] args) {
         LinkedList ll = new LinkedList();
-        ll.addFirst(10);
-        ll.addFirst(20);
-        ll.addLast(30);
-        ll.addLast(40);
-        ll.addMiddle(2, 25); // Add 25 at index 2
-        ll.print(); // Print the linked list
-        head = ll.mergeSort(head); // Assign the sorted list back to head
-        ll.print(); // Print the sorted linked list
     }
 }

@@ -14,21 +14,24 @@ A **Linked List** is a linear data structure where elements (nodes) are stored i
 
 ## Supported Operations
 
-| Method                | Description                                              |
-|-----------------------|---------------------------------------------------------|
-| `addFirst(int data)`  | Adds a node at the beginning of the list                |
-| `addLast(int data)`   | Adds a node at the end of the list                      |
-| `addMiddle(int idx, int data)` | Adds a node at a specific index                |
-| `print()`             | Prints the linked list                                  |
-| `removeFirst()`       | Removes the first node and returns its value            |
-| `removeLast()`        | Removes the last node and returns its value             |
-| `iterativeSearch(int key)` | Searches for a value iteratively and returns index |
-| `recursiveSearch(int key)` | Searches for a value recursively and returns index |
-| `reverse()`           | Reverses the linked list                                |
-| `deleteNthFromEnd(int n)` | Removes the Nth node from the end                   |
-| `findMid(Node head)`  | Finds the middle node                                   |
-| `checkPalindrome()`   | Checks if the list is a palindrome                      |
-| `detectLoop()`        | Detects a cycle in the list (Floyd's Algorithm)         |
+| Method                        | Description                                              |
+|-------------------------------|---------------------------------------------------------|
+| `addFirst(int data)`          | Adds a node at the beginning of the list                |
+| `addLast(int data)`           | Adds a node at the end of the list                      |
+| `addMiddle(int idx, int data)`| Adds a node at a specific index                         |
+| `print()`                     | Prints the linked list                                  |
+| `removeFirst()`               | Removes the first node and returns its value            |
+| `removeLast()`                | Removes the last node and returns its value             |
+| `iterativeSearch(int key)`    | Searches for a value iteratively and returns index      |
+| `recursiveSearch(int key)`    | Searches for a value recursively and returns index      |
+| `reverse()`                   | Reverses the linked list                               |
+| `deleteNthFromEnd(int n)`     | Removes the Nth node from the end                      |
+| `findMid(Node head)`          | Finds the middle node                                   |
+| `checkPalindrome()`           | Checks if the list is a palindrome                      |
+| `detectLoop()`                | Detects a cycle in the list (Floyd's Algorithm)         |
+| `removeDuplicates()`          | Removes duplicate values from a sorted linked list      |
+| `mergeSort(Node head)`        | Sorts the linked list using merge sort                  |
+| `zigZag()`                    | Rearranges the list in zig-zag fashion                  |
 
 ---
 
@@ -46,6 +49,12 @@ public static void main(String[] args){
     ll.print();           // Print the list
     ll.reverse();         // Reverse the linked list
     ll.print();           // Print the reversed list
+    ll.removeDuplicates();// Remove duplicates if sorted
+    ll.print();           // Print after removing duplicates
+    ll.head = ll.mergeSort(ll.head); // Sort the list
+    ll.print();           // Print sorted list
+    ll.zigZag();          // Rearrange in zig-zag fashion
+    ll.print();           // Print zig-zag list
 }
 ```
 
@@ -81,6 +90,9 @@ public class LinkedList {
     public Node findMid(Node head) { /* ... */ }
     public boolean checkPalindrome() { /* ... */ }
     public static boolean detectLoop() { /* ... */ }
+    public void removeDuplicates() { /* ... */ }
+    public Node mergeSort(Node head) { /* ... */ }
+    public void zigZag() { /* ... */ }
 
     public static void main(String[] args) { /* ... */ }
 }
@@ -96,6 +108,9 @@ public class LinkedList {
 - **Find Middle Node:** Uses slow and fast pointers.
 - **Check Palindrome:** Compares first half with reversed second half.
 - **Detect Loop:** Floyd’s Cycle Detection (Tortoise and Hare).
+- **Remove Duplicates:** Removes consecutive duplicate nodes in a sorted list.
+- **Merge Sort:** Recursively sorts the linked list using merge sort.
+- **Zig-Zag Rearrangement:** Rearranges nodes in zig-zag order.
 
 ---
 
