@@ -14,5 +14,6 @@ public class JavaBasics {
                 break;
             }
         }
+        scanner.close();
     }
 }

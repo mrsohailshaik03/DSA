@@ -223,7 +223,7 @@ public class LinkedList {
         prev.next = prev.next.next;
     }
 
-    // Finding the middle node of the Linked List usind the slow and fast pointer
+    // Finding the middle node of the Linked List using the slow and fast pointer
     // technique
     // 1. Initialize two pointers, slow and fast, both pointing to the head.
     // 2. Move slow by one step and fast by two steps in each iteration.

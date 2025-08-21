@@ -1,6 +1,6 @@
 # Linked List Implementation in Java
 
-A **Linked List** is a linear data structure where elements (nodes) are stored in non-contiguous memory locations. Each node contains data and a reference (pointer) to the next node in the sequence.
+A **Linked List** is a linear data structure where each element (node) contains data and a reference to the next node. This implementation provides a variety of operations for singly linked lists in Java.
 
 ---
 
@@ -12,7 +12,7 @@ A **Linked List** is a linear data structure where elements (nodes) are stored i
 
 ---
 
-## Supported Operations
+
 
 | Method                        | Description                                              |
 |-------------------------------|---------------------------------------------------------|
@@ -40,27 +40,29 @@ A **Linked List** is a linear data structure where elements (nodes) are stored i
 ```java
 public static void main(String[] args){
     LinkedList ll = new LinkedList();
-    ll.addFirst(30);      // Add 30 at beginning
-    ll.addFirst(20);      // Add 20 at beginning
-    ll.addFirst(10);      // Add 10 at beginning
-    ll.addLast(50);       // Add 50 at end
-    ll.addLast(60);       // Add 60 at end
-    ll.addMiddle(3, 40);  // Add 40 at index 3
-    ll.print();           // Print the list
-    ll.reverse();         // Reverse the linked list
-    ll.print();           // Print the reversed list
-    ll.removeDuplicates();// Remove duplicates if sorted
-    ll.print();           // Print after removing duplicates
-    ll.head = ll.mergeSort(ll.head); // Sort the list
-    ll.print();           // Print sorted list
-    ll.zigZag();          // Rearrange in zig-zag fashion
-    ll.print();           // Print zig-zag list
+    ll.addFirst(30);
+    ll.addFirst(20);
+    ll.addFirst(10);
+    ll.addLast(50);
+    ll.addLast(60);
+    ll.addMiddle(3, 40);
+    ll.print();
+    ll.reverse();
+    ll.print();
+    ll.removeDuplicates();
+    ll.print();
+    ll.head = ll.mergeSort(ll.head);
+    ll.print();
+    ll.zigZag();
+    ll.print();
 }
 ```
 
 ---
 
 ## Full Code
+
+See the `LinkedList/LinkedList.java` file for the complete implementation, including all methods listed above.
 
 ```java
 public class LinkedList {
@@ -98,7 +100,7 @@ public class LinkedList {
 }
 ```
 
-> **Note:** See the source code for full method implementations.
+> **Note:** For full method implementations, refer to the source code in the `LinkedList` folder.
 
 ---
 
@@ -111,10 +113,16 @@ public class LinkedList {
 - **Remove Duplicates:** Removes consecutive duplicate nodes in a sorted list.
 - **Merge Sort:** Recursively sorts the linked list using merge sort.
 - **Zig-Zag Rearrangement:** Rearranges nodes in zig-zag order.
+## Additional Files
 
+- **Doubly Linked List:**  
+    See the [`LinkedList/DoublyLinkedList.java`](LinkedList/DoublyLinkedList.java) file for the implementation of a doubly linked list, which supports both forward and backward traversal.
+
+- **Circular Linked List Notes:**  
+    Refer to [`LinkedList/CircularLinkedList.pdf`](LinkedList/CircularLinkedList.pdf) for detailed notes and diagrams explaining circular linked lists.
 ---
 
 ## References
 
-- [GeeksforGeeks: Linked List Data Structure](https://www.geeksforgeeks.org/data-structures/linked-list/)
+- [GeeksForGeeks: Linked List Data Structure](https://www.geeksforgeeks.org/data-structures/linked-list/)
 - [Java Documentation](https://docs.oracle.com/en/java/)

@@ -1,5 +1,4 @@
 // import java.util.*;
-
 class basic {
     public static void HelloWorld() {
         System.out.println("Hello, World!");

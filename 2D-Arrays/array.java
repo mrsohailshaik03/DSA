@@ -81,5 +81,6 @@ public class array {
             }
             System.out.println();
         }
+        sc.close();
     }
 }
