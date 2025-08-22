@@ -1,35 +1,13 @@
-<!--
-Stack Data Structure Documentation
-==================================
+## Stack Data Structure in Java
 
-Definition:
------------
-A **Stack** is a linear data structure that follows the Last-In-First-Out (LIFO) principle. This means the element that is added last will be the first one to be removed. Stacks are widely used in programming for their simplicity and utility in various algorithms and system processes.
+A **stack** is a linear data structure that follows the Last-In-First-Out (LIFO) principle. This means the last element added to the stack is the first one to be removed. Stacks are commonly used for function call management, expression evaluation, undo mechanisms, and more.
 
-Main Operations:
-----------------
-1. **push(x)**: Inserts element `x` onto the top of the stack.
-2. **pop()**: Removes and returns the top element from the stack. If the stack is empty, an error value (e.g., -1) is returned.
-3. **peek()**: Returns the top element without removing it from the stack. If the stack is empty, an error value (e.g., -1) is returned.
-4. **isEmpty()**: Checks if the stack is empty and returns a boolean value.
+### Key Operations
 
-Applications:
--------------
-- Expression evaluation and syntax parsing (e.g., evaluating postfix expressions)
-- Undo mechanisms in text editors and other applications
-- Backtracking algorithms (such as maze solving and recursion)
-- Function call management in programming languages (call stack)
-
-Implementations:
-----------------
-- **ArrayList-based Stack**: Utilizes Java's `ArrayList` to store stack elements, allowing dynamic resizing and efficient addition/removal from the end.
-- **Linked List-based Stack**: Uses a singly linked list where each node represents an element in the stack, providing efficient push and pop operations at the head of the list.
-
-Both implementations support the standard stack operations and can be chosen based on specific requirements such as memory usage and performance characteristics.
--->
-## Stack Implementations in Java
-
-This section provides Java implementations of the Stack data structure using both `ArrayList` and a `singly linked list`. Each implementation includes the main stack operations and example usage.
+- **push**: Add an element to the top of the stack.
+- **pop**: Remove and return the top element.
+- **peek**: View the top element without removing it.
+- **isEmpty**: Check if the stack is empty.
 
 ---
 
@@ -144,4 +122,4 @@ public class StacksUsingLinkedList {
 
 ---
 
-Both implementations support the standard stack operations: `push`, `pop`, `peek`, and `isEmpty`. Use the implementation that best fits your requirements.
+Both implementations support the standard stack operations. Choose the one that best fits your use case.
