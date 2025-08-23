@@ -68,15 +68,14 @@ public class StacksUsingLinkedList {
 
         // Main method to demonstrate stack operations
         public static void main(String[] args) {
-            Stack s = new Stack();
-            s.push(1); // Stack: 1
-            s.push(2); // Stack: 2 -> 1
-            s.push(3); // Stack: 3 -> 2 -> 1
+            Stack.push(1); // Stack: 1
+            Stack.push(2); // Stack: 2 -> 1
+            Stack.push(3); // Stack: 3 -> 2 -> 1
 
             // Print and remove elements from stack
-            while (!s.isEmpty()) {
-                System.out.println(s.peek()); // Print top element
-                s.pop();                      // Remove top element
+            while (!Stack.isEmpty()) {
+                System.out.println(Stack.peek()); // Print top element
+                Stack.pop();                      // Remove top element
             }
         }
     }
