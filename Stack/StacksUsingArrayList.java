@@ -34,7 +34,7 @@ public class StacksUsingArrayList {
 
         // Checks if the stack is empty
         public static boolean isEmpty() {
-            return list.size() == 0;
+            return list.isEmpty();
         }
 
         // Push operation: Adds an element to the top of the stack
@@ -64,17 +64,15 @@ public class StacksUsingArrayList {
     }
 
     public static void main(String[] args) {
-        Stack s = new Stack();
-
         // Push elements onto the stack
-        s.push(1);
-        s.push(2);
-        s.push(3);
+        Stack.push(1);
+        Stack.push(2);
+        Stack.push(3);
 
         // Pop and print all elements from the stack
-        while (!s.isEmpty()) {
-            System.out.println(s.peek()); // Print the top element
-            s.pop();                      // Remove the top element
+        while (!Stack.isEmpty()) {
+            System.out.println(Stack.peek()); // Print the top element
+            Stack.pop();                      // Remove the top element
         }
     }
 }
