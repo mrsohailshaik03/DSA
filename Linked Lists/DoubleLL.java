@@ -106,7 +106,7 @@ public class DoubleLL{
         ll.addLast(20);
         ll.addFirst(5);
         ll.printList();
-        System.out.println(ll.size);
+        System.out.println(DoubleLL.size);
         ll.reverse();
         ll.printList();
     }
